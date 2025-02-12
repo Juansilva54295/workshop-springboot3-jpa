@@ -32,17 +32,5 @@ public class UserService  {
 	public void deletar (Long id) {
 		repository.deleteById(id);
 	}
-	
-	public User atualizar(Long id, User obj) {
-		User entidade = repository.getReferenceById(id);
-		updadeData(entidade,obj);
-		return repository.save(entidade);
-	}
-
-	private void updadeData(User entidade, User obj) {	
-		entidade.setNome(obj.getNome());
-		entidade.setEmail(obj.getEmail());
-		entidade.setNumero(obj.getNumero());
-	}
 
 }
