@@ -9,6 +9,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetospring.curso.entidade.enums.StatusPedido;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Pedido implements Serializable{
@@ -37,6 +39,8 @@ public class Pedido implements Serializable{
 	@OneToMany(mappedBy = "id.pedido")
 	private Set<PedidoItem> itens = new HashSet<>();
 	
+	@OneToOne(mappedBy = "pedido",cascade = CascadeType.ALL)
+	private Pagamento pagamento;;
 	
 	public Pedido() {
 		
@@ -74,6 +78,12 @@ public class Pedido implements Serializable{
 		if(statusPedido != null) {
 		this.statusPedido = statusPedido.getCode();
 		}
+	}
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 	public Set<PedidoItem> getItens(){
 		return itens;

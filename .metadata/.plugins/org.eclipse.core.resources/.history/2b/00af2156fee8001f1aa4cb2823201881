@@ -1,0 +1,5 @@
+package com.projetospring.curso.entidade;
+
+public class Pagamento {
+
+}
