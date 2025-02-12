@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.projetospring.curso.entidade.Categoria;
 import com.projetospring.curso.entidade.Pedido;
+import com.projetospring.curso.entidade.PedidoItem;
 import com.projetospring.curso.entidade.Produto;
 import com.projetospring.curso.entidade.User;
 import com.projetospring.curso.entidade.enums.StatusPedido;
 import com.projetospring.curso.repositories.CategoriaRepository;
+import com.projetospring.curso.repositories.PedidoItemRepository;
 import com.projetospring.curso.repositories.PedidoRepository;
 import com.projetospring.curso.repositories.ProdutoRepository;
 import com.projetospring.curso.repositories.UserRepository;
@@ -33,6 +35,9 @@ public class Testconfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private PedidoItemRepository pedidoitemRepository;
 	
 	
 
@@ -66,6 +71,12 @@ public class Testconfig implements CommandLineRunner {
 		p4.getCategorias().add(cat3);
 		p5.getCategorias().add(cat2);
 		produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
+		PedidoItem oi1 = new PedidoItem(o1, p1, 2, p1.getPreco());
+		PedidoItem oi2 = new PedidoItem(o1, p3, 1, p3.getPreco());
+		PedidoItem oi3 = new PedidoItem(o2, p3, 2, p3.getPreco());
+		PedidoItem oi4 = new PedidoItem(o3, p5, 2, p5.getPreco());
+		pedidoitemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
 	
 		

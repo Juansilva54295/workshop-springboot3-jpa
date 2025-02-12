@@ -1,0 +1,5 @@
+package com.projetospring.curso.entidade.pk;
+
+public class PedidoItemPK {
+
+}

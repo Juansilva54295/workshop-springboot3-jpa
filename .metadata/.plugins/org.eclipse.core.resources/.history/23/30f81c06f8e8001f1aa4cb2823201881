@@ -1,0 +1,69 @@
+package com.projetospring.curso.entidade;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+import com.projetospring.curso.entidade.pk.PedidoItemPK;
+
+public class PedidoItem implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	
+	private PedidoItemPK id;
+	private Integer qtdd;
+	private Double preco;
+	
+	public PedidoItem(){
+	}
+
+	public PedidoItem(Pedido pedido, Produto produto,Integer qtdd, Double preco) {
+		super();
+		id.setPedido(pedido);
+		id.setProduto(produto);
+		this.qtdd = qtdd;
+		this.preco = preco;
+		
+	}
+	
+	public Pedido getPedido() {
+		return id.getPedido();
+	}
+	
+	public void Pedido setPedido(Pedido pedido) {
+	    id.setPedido(pedido);
+	}
+
+	public Integer getQtdd() {
+		return qtdd;
+	}
+
+	public void setQtdd(Integer qtdd) {
+		this.qtdd = qtdd;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PedidoItem other = (PedidoItem) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+}
