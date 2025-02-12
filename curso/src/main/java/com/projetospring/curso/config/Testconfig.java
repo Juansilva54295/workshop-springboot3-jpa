@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.projetospring.curso.entidade.Categoria;
 import com.projetospring.curso.entidade.Pedido;
+import com.projetospring.curso.entidade.Produto;
 import com.projetospring.curso.entidade.User;
 import com.projetospring.curso.entidade.enums.StatusPedido;
 import com.projetospring.curso.repositories.CategoriaRepository;
 import com.projetospring.curso.repositories.PedidoRepository;
+import com.projetospring.curso.repositories.ProdutoRepository;
 import com.projetospring.curso.repositories.UserRepository;
 
 @Configuration
@@ -29,6 +31,9 @@ public class Testconfig implements CommandLineRunner {
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
+	@Autowired
+	private ProdutoRepository produtoRepository;
+	
 	
 
 	@Override
@@ -42,12 +47,19 @@ public class Testconfig implements CommandLineRunner {
 		
 		Categoria cat1 = new Categoria(null, "Electronics");
 		Categoria cat2 = new Categoria(null, "Books");
-		Categoria cat3 = new Categoria(null, "Computers"); 
-
+		Categoria cat3 = new Categoria(null, "Computers");
 		
+		Produto p1 = new Produto(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Produto p2 = new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Produto p3 = new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Produto p4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Produto p5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+
+		produtoRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		userRepository.saveAll(Arrays.asList(u1,u2));
 		pedidoRepository.saveAll(Arrays.asList(o1,o2,o3));
 	    categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+	   
 	}
 
 }
