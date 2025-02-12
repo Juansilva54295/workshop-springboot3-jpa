@@ -1,0 +1,5 @@
+package com.projetospring.curso.resources.exceptions;
+
+public class ResourceExceptionHandler {
+
+}
