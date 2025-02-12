@@ -1,0 +1,16 @@
+package com.projetospring.curso.services;
+
+import java.util.List;
+
+import com.projetospring.curso.entidade.User;
+import com.projetospring.curso.repositories.UserRepository;
+
+public class UserService  {
+	
+	private UserRepository repository;
+	
+	public List<User> findAll(){
+		return repository.findAll();
+	}
+
+}
