@@ -69,6 +69,10 @@ public class PedidoItem implements Serializable{
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	public Double getSubTotal() {
+		return preco* qtdd;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
