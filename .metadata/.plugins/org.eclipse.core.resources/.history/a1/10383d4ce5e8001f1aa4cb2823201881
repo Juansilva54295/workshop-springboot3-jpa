@@ -1,0 +1,5 @@
+package com.projetospring.curso.entidade.enums;
+
+public enum StatusPedido {
+
+}
