@@ -1,0 +1,5 @@
+package com.projetospring.curso.repositories;
+
+public class UserRepository {
+
+}
