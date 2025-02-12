@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.projetospring.curso.entidade.User;
 import com.projetospring.curso.repositories.UserRepository;
 import com.projetospring.curso.services.exceptions.DatabaseException;
 import com.projetospring.curso.services.exceptions.ResourceNotFoundException;
-
-import jakarta.persistence.EntityNotFoundException;
 
 
 @Service
@@ -50,7 +49,8 @@ public class UserService  {
 		User entidade = repository.getReferenceById(id);
 		updadeData(entidade,obj);
 		return repository.save(entidade);
-		}catch(EntityNotFoundException e) {
+		}catch(RuntimeException e) {
+			e.printStackTrace();
 			throw new ResourceNotFoundException(id);
 		}
 	}
